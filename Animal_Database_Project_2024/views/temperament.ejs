@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+
+  <body>
+    <%- include('./partials/navbar.ejs') %>
+      <div class="container-fluid mt-5">
+        <h2 class="p-3 text-center">Temperament Management</h2>
+        <div class="mb-3 text-center">
+          <button class="btn btn-success btn-sm mx-1" onclick="addTemperament('/')">Add New Temperament</button>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (temperaments && temperaments.length> 0) { %>
+                <% temperaments.forEach(function(temp) { %>
+                  <tr>
+                    <td>
+                      <%= temp.id %>
+                    </td>
+                    <td>
+                      <%= temp.Temperament %>
+                    </td>
+                    <td>
+                      <button class="btn btn-warning btn-sm mx-1"
+                        onclick="updateTemperament('/temperament', '<%= temp.id %>')">Update temperament</button>
+                      <button class="btn btn-danger btn-sm mx-1"
+                        onclick="deleteTemperament('/temperament', '<%= temp.id %>')">Delete temperament</button>
+                    </td>
+                  </tr>
+                  <% }); %>
+                    <% } else { %>
+                      <tr>
+                        <td colspan="3" class="text-center">No temperaments found.</td>
+                      </tr>
+                      <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </body>
+
+</html>

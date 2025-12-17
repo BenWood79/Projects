@@ -1,0 +1,12 @@
+{
+    "records": [
+    {
+        "id": 0,
+        "query": "INSERT INTO Species (Species) VALUES ('Teddy bear hamster')"
+    },
+    {
+        "id": 1,
+        "query": "INSERT INTO Species (Species) VALUES ('Jack-Russel')"
+    }
+    ]
+}

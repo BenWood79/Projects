@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+
+  <body>
+    <%- include('./partials/navbar.ejs') %>
+      <div class="container-fluid mt-5">
+        <h2 class="p-3 text-center">Animals for Adoption</h2>
+        <div class="mb-3 text-center">
+          <div class="d-inline-flex flex-wrap justify-content-center gap-2">
+            <button class="btn btn-success btn-sm" onclick="popularNames()">Popular Animal Names</button>
+            <button class="btn btn-success btn-sm" onclick="adoptionDetails()">All Adoption Details</button>
+            <button class="btn btn-success btn-sm" onclick="byAge()">Animals By Age</button>
+            <button class="btn btn-success btn-sm" onclick="dateRange()">Animals Born In Date Range</button>
+            <button class="btn btn-success btn-sm" onclick="bySize()">Number of Animals Per Size</button>
+            <button class="btn btn-warning btn-sm" onclick="allAnimals()">All Animals</button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>Animal-ID</th>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Birthday</th>
+                <th>Temperament</th>
+                <th>Size</th>
+                <th>Age</th>
+                <th>Adopted</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (animals && animals.length> 0) { %>
+                <% animals.forEach(function(animal) { %>
+                  <tr>
+                    <td>
+                      <%= animal.id %>
+                    </td>
+                    <td>
+                      <%= animal.Name %>
+                    </td>
+                    <td>
+                      <%= animal.Species %>
+                    </td>
+                    <td>
+                      <%= animal.Birthday %>
+                    </td>
+                    <td>
+                      <%= animal.Temperament %>
+                    </td>
+                    <td>
+                      <%= animal.Size %>
+                    </td>
+                    <td>
+                      <%= animal.Age || 'N/A' %>
+                    </td>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch"
+                          id="adoptedSwitch-<%= animal.id %>" <%=animal.Adopted==='true' || animal.Adopted===true
+                          ? 'checked' : '' %>
+                        onchange="toggleAdoption('<%= animal.id %>', this.checked)"
+                          >
+                          <label class="form-check-label" for="adoptedSwitch-<%= animal.id %>"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <button class="btn btn-warning btn-sm mx-1"
+                        onclick="adoptAnimal('/animals', '<%=animal.id%>')">Adopt</button>
+                      <button class="btn btn-danger btn-sm mx-1"
+                        onclick="cancelAdoption('/animals', '<%=animal.id%>')">Cancel Adoption</button>
+                    </td>
+                  </tr>
+                  <% }); %>
+                    <% } else { %>
+                      <tr>
+                        <td colspan="9" class="text-center">No animals found. The database will auto-populate on startup
+                          when empty.</td>
+                      </tr>
+                      <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <script>
+        function toggleAdoption(animalId, isAdopted) {
+          if (isAdopted) {
+            adoptAnimal('/animals', animalId);
+          } else {
+            cancelAdoption('/animals', animalId);
+          }
+        }
+
+        function allAnimals() {
+          fetch('/animals/all')
+            .then(res => res.json())
+            .then(data => renderTable(data))
+            .catch(err => console.error(err));
+        }
+
+        function popularNames() {
+          fetch('/animals/popular_names')
+            .then(res => res.json())
+            .then(data => renderTable(data))
+            .catch(err => console.error(err));
+        }
+
+        function adoptionDetails() {
+          fetch('/animals/all')
+            .then(res => res.json())
+            .then(data => renderTable(data.filter(a => a.Adopted === 'true' || a.Adopted === true)))
+            .catch(err => console.error(err));
+        }
+
+        function byAge() {
+          fetch('/animals/age')
+            .then(res => res.json())
+            .then(data => renderTable(data))
+            .catch(err => console.error(err));
+        }
+
+        function bySize() {
+          fetch('/animals/size')
+            .then(res => res.json())
+            .then(data => renderTable(data))
+            .catch(err => console.error(err));
+        }
+
+        function dateRange() {
+          const start = prompt('Start date (YYYY-MM-DD):');
+          const end = prompt('End date (YYYY-MM-DD):');
+          if (!start || !end) return;
+          fetch(`/animals/date-range?start=${start}&end=${end}`)
+            .then(res => res.json())
+            .then(data => renderTable(data))
+            .catch(err => console.error(err));
+        }
+
+        function renderTable(data) {
+          const tbody = document.querySelector('tbody');
+          if (!data || data.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="9" class="text-center">No results found.</td></tr>';
+            return;
+          }
+          tbody.innerHTML = data.map(animal => `
+            <tr>
+              <td>${animal.id}</td>
+              <td>${animal.Name}</td>
+              <td>${animal.Species}</td>
+              <td>${animal.Birthday}</td>
+              <td>${animal.Temperament}</td>
+              <td>${animal.Size}</td>
+              <td>${animal.Age || 'N/A'}</td>
+              <td>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="adoptedSwitch-${animal.id}"
+                    ${animal.Adopted === 'true' || animal.Adopted === true ? 'checked' : ''}
+                    onchange="toggleAdoption('${animal.id}', this.checked)">
+                  <label class="form-check-label" for="adoptedSwitch-${animal.id}"></label>
+                </div>
+              </td>
+              <td>
+                <button class="btn btn-warning btn-sm mx-1" onclick="adoptAnimal('/animals', '${animal.id}')">Adopt</button>
+                <button class="btn btn-danger btn-sm mx-1" onclick="cancelAdoption('/animals', '${animal.id}')">Cancel Adoption</button>
+              </td>
+            </tr>
+          `).join('');
+        }
+
+        async function adoptAnimal(url, animalId) {
+          try {
+            const response = await fetch(url + '/adopt', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ animalId }),
+              credentials: 'same-origin'
+            });
+            if (response.status === 401) {
+              alert('You must log in or sign up to adopt an animal.');
+            } else if (response.ok) {
+              location.reload();
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        }
+
+        async function cancelAdoption(url, animalId) {
+          try {
+            const response = await fetch(url + '/cancel-adoption', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ animalId }),
+              credentials: 'same-origin'
+            });
+            if (response.status === 401) {
+              alert('You must log in or sign up to cancel an adoption.');
+            } else if (response.ok) {
+              location.reload();
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        }
+      </script>
+  </body>
+
+</html>
