@@ -242,12 +242,12 @@ These projects showcase my development capabilities and are available for review
 
 ---
 
-````diff
-+ Green Text
-- Red Text
+
 ## NB! : The following microservices: 
-   ## Ecommerce_Examroject
-   ##   Goldmed_Self_Built
-   ##   StockMarket_Self_Built
-   ##   TheTheoShop_Self_Built
-## are still unfinished works in progress (17.12.2025)
+````diff
+-     Ecommerce_Examproject
+-     Goldmed_Self_Built
+-     StockMarket_Self_Built
+-     TheTheoShop_Self_Built
+
+-     are still unfinished works in progress (17.12.2025)
