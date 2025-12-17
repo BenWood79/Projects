@@ -15,6 +15,7 @@ A comprehensive collection of full-stack web applications demonstrating expertis
 ## 📁 Projects Overview
 
 ### 1. Animal Database Project 2024
+
 **A full-stack animal adoption management system**
 
 - **Features**:
@@ -23,7 +24,6 @@ A comprehensive collection of full-stack web applications demonstrating expertis
   - Advanced filtering by age, size, species, and date range
   - Adoption tracking with transaction-based database operations
   - Dynamic table rendering with JavaScript
-  
 - **Technologies**: Express.js, MySQL, Sequelize, EJS, Bootstrap
 - **Key Achievements**:
   - Implemented transactional adoption system with INSERT IGNORE for idempotency
@@ -36,9 +36,11 @@ A comprehensive collection of full-stack web applications demonstrating expertis
 ---
 
 ### 2. Ecommerce Exam Project
+
 **A comprehensive e-commerce platform with front-end and back-end separation**
 
 - **Features**:
+
   - Dual architecture (front-end and back-end servers)
   - Product catalog with search and filtering
   - Shopping cart management
@@ -60,9 +62,11 @@ A comprehensive collection of full-stack web applications demonstrating expertis
 ---
 
 ### 3. API Gateway
+
 **A lightweight HTTP proxy server for request forwarding and microservice routing**
 
 - **Features**:
+
   - Request forwarding and routing
   - Microservice gateway pattern implementation
   - HTTP proxy functionality
@@ -77,9 +81,11 @@ A comprehensive collection of full-stack web applications demonstrating expertis
 ---
 
 ### 4. GoldMed Self-Built
+
 **A course management and educational services platform**
 
 - **Features**:
+
   - User authentication and account management
   - Course catalog and enrollment system
   - Educational content display
@@ -97,9 +103,11 @@ A comprehensive collection of full-stack web applications demonstrating expertis
 ---
 
 ### 5. Stock Market Self-Built
+
 **An interactive stock market simulator and trading platform**
 
 - **Features**:
+
   - User registration and login
   - Live stock portfolio tracking
   - Buy/sell stock functionality
@@ -117,9 +125,11 @@ A comprehensive collection of full-stack web applications demonstrating expertis
 ---
 
 ### 6. TheTheoShop Self-Built
+
 **An e-commerce product showcase with multimedia content**
 
 - **Features**:
+
   - Product catalog with detailed descriptions
   - Image and video galleries
   - Product filtering and search
@@ -139,6 +149,7 @@ A comprehensive collection of full-stack web applications demonstrating expertis
 ## 🎯 Key Skills Demonstrated
 
 ### Database Design
+
 - ✅ MySQL schema design and relationships
 - ✅ Sequelize ORM model definitions
 - ✅ Raw SQL query optimization
@@ -146,6 +157,7 @@ A comprehensive collection of full-stack web applications demonstrating expertis
 - ✅ Constraint handling (UNIQUE, PRIMARY KEY, FOREIGN KEY)
 
 ### Backend Development
+
 - ✅ RESTful API design and implementation
 - ✅ Authentication and authorization (Passport.js)
 - ✅ Session management
@@ -154,6 +166,7 @@ A comprehensive collection of full-stack web applications demonstrating expertis
 - ✅ Service layer architecture
 
 ### Frontend Development
+
 - ✅ EJS templating engine
 - ✅ Bootstrap responsive design
 - ✅ Dynamic DOM manipulation with JavaScript
@@ -161,6 +174,7 @@ A comprehensive collection of full-stack web applications demonstrating expertis
 - ✅ Form validation and user feedback
 
 ### Software Engineering
+
 - ✅ MVC architectural pattern
 - ✅ Clean code practices
 - ✅ Code refactoring and optimization
@@ -169,6 +183,7 @@ A comprehensive collection of full-stack web applications demonstrating expertis
 - ✅ Debugging and troubleshooting
 
 ### DevOps & Deployment
+
 - ✅ Environment configuration with dotenv
 - ✅ Database initialization and migrations
 - ✅ Application startup automation
