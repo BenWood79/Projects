@@ -240,4 +240,6 @@ These projects showcase my development capabilities and are available for review
 
 **Author**: BenWood79
 
-## <span style="color:red">NB! : Some projects are still unfinished works in progress (17.12.2025)</span>
+---
+
+⚠️ **NB! : Some projects are still unfinished works in progress (17.12.2025)**
