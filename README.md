@@ -146,7 +146,7 @@ A comprehensive collection of full-stack web applications demonstrating expertis
 
 ---
 
-##  Key Skills Demonstrated
+## Key Skills Demonstrated
 
 ### Database Design
 
@@ -240,4 +240,4 @@ These projects showcase my development capabilities and are available for review
 
 **Author**: BenWood79
 
-## NB! : Some projects are still unfinished works in progress (17.12.2025)
+## <span style="color:red">NB! : Some projects are still unfinished works in progress (17.12.2025)</span>
