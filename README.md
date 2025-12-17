@@ -239,3 +239,5 @@ These projects showcase my development capabilities and are available for review
 **Last Updated**: December 17, 2025
 
 **Author**: BenWood79
+
+## NB! : **Some projects are still unfinished workd in progress (17.12.2025)
