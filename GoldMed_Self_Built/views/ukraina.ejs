@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body>
+    <%- include('./partials/navbar.ejs') %>  
+    <%- include('./partials/header.ejs') %>
+    
+    <div class="container my-5" itemscope="http://schema.org/ImageGallery">
+      <div class="row g-4">
+      <a href="/ukraina/ukDno">
+        <p style="color:black">CLICK HERE</p>
+        <img class="DNOfrontpage" src="/images/GoldMed/DNO/1 Forside.jpg" class="img" alt="Ukraine Image 1">
+      </a>
+      <a href="/ukraina/ukEik">
+        <p style="color:black">CLICK HERE</p>
+        <img class="DNOfrontpage" src="/images/GoldMed/Eikebladet/1EIK.jpg" class="img" alt="Ukraine Image 1">
+      </a>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>

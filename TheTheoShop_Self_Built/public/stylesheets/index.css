@@ -1,0 +1,199 @@
+.products {
+  max-width: 300px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+#logo {
+  width: 50px;
+  height: 50px;
+}
+
+nav {
+  background-image: linear-gradient(
+      rgba(250, 249, 249, 0.5),
+      rgba(219, 213, 213, 0.5)
+    );
+  font: 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.indexPics {
+  width: 100%;
+  max-width: 75%;
+  height: auto;
+  margin: 0 auto;
+}
+
+#homePicture {
+  width: 100%;
+  max-height: 950px;
+  opacity: 0;
+}
+
+.row-container {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-inline: 50px;
+  align-self: normal;
+}
+
+.card {
+  min-width: 35px;
+  width: 80px;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: flex-end;
+  flex-grow: auto;
+  cursor: pointer;
+  position: relative;
+  transition: all 5s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-timing: 0.35s;
+}
+
+/* Card gradient patterns - groups of 3 cards with same color */
+
+/* Cards 1-3, 13-15, 25-27... (purple) */
+.card:nth-child(12n + 1),
+.card:nth-child(12n + 2),
+.card:nth-child(12n + 3) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Cards 4-6, 16-18, 28-30... (pink) */
+.card:nth-child(12n + 4),
+.card:nth-child(12n + 5),
+.card:nth-child(12n + 6) {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* Cards 7-9, 19-21, 31-33... (blue) */
+.card:nth-child(12n + 7),
+.card:nth-child(12n + 8),
+.card:nth-child(12n + 9) {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Cards 10-12, 22-24, 34-36... (green) */
+.card:nth-child(12n + 10),
+.card:nth-child(12n + 11),
+.card:nth-child(12n) {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.card:hover {
+  width: 200px;
+  flex-grow: 0.5;
+}
+
+.card-content {
+  padding: 20px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid #fefefe;
+  transition: border-color var(--transition-timing) ease;
+}
+.product-image {
+  width: 100%;
+  /*height: auto;*/
+  border-radius: 10px;
+  margin: 10px 0 10px 0;
+  object-fit: cover;
+}
+
+.card:hover .profile-image {
+  border-color: rgb(110, 252, 205);
+}
+
+.title {
+  color: white;
+  font-size: 0.5px;
+  font-weight: bold;
+  position: absolute;
+  float: right;
+  transform: translateY(5px);
+  opacity: 0;
+  transition: all var(--transition-timing) ease;
+}
+
+.card:hover .title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+footer, header {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    font-size: 18px;
+    padding: 5px;
+  }
+
+  .order {
+    font-size: 16px;
+    padding-left: 5px;
+  }
+
+  .products {
+    max-width: 200px;
+  }
+
+  .indexPics {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  .order {
+    font-size: 14px;
+    padding-left: 5px;
+  }
+
+  .products {
+    max-width: 150px;
+  }
+
+  .indexPics {
+    max-width: 100%;
+  }
+}

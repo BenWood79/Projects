@@ -1,0 +1,12 @@
+{
+    "records":[
+        {
+            "id": 0,
+            "query": "INSERT INTO Users (fullname, username, password, role) VALUES ('systemAdmin', 'pro_admin','admin1234', 'admin')"
+        },
+        {
+            "id": 1,
+            "query": "INSERT INTO Users (fullname, username, password, role) VALUES ('John Doe', 'JohnDoe','User1234', 'member')"
+        }
+    ]
+}

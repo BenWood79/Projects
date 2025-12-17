@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <%-include('./partials/head.ejs')%>
+
+  <body>
+    <%-include('./partials/navbar.ejs')%>
+    <form onsubmit="return validateSignup()">
+        <section>
+            <label for="firstname">First Name</label>
+            <input id="firstname" name="firstname" type="text" autocomplete="firstname" required autofocus>
+        </section>
+        <section>
+            <label for="lastname">Last Name</label>
+            <input id="lastname" name="lastname" type="text" autocomplete="lastname" required autofocus>
+        </section>
+        <section>
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+        </section>
+        <section>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="text" autocomplete="email" required autofocus>
+        </section>
+        <section>
+            <label for="address">Address</label>
+            <input id="address" name="address" type="text" autocomplete="address" required autofocus>
+        </section>
+        <section>
+            <label for="telephone">Telephone</label>
+            <input id="telephone" name="telephone" type="text" autocomplete="telephone" required>
+        </section>
+        <section>
+            <label for="current-password">Password</label>
+            <input id="current-password" name="password" type="password" autocomplete="current-password" required>
+        </section>
+        <button type="submit">Sign up</button>
+    </form>
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body>
+    <%- include('./partials/navbar.ejs') %>  
+    <%- include('./partials/header.ejs') %>
+
+    <div class="container my-5">
+      <div class="mb-4">
+        <button class="btn btn-secondary;  background-color: #87ceeb;" onclick="window.history.back()">&#8592; Back</button>
+      </div>
+      <div class="row g-4">
+        <% 
+          // List your image filenames here
+          const dnoImages = [
+            "1 Forside.jpg", "2 DN0.jpg", "3 DN1.jpg", "4 DN2.jpg", "5 DN3.jpg", "6 DN4.jpg", "7 DN5.jpg", "8 DN6.jpg", "9 DN nest siste.jpg", "10 DN siste.jpg"
+          ];
+          const eikImages = [
+            "1EIK.jpg", "2EIK.jpg", "3EIK.jpg", "4EIK.jpg"
+          ];
+        %>
+        <% eikImages.forEach(function(img) { %>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <img src="../images/GoldMed/Eikebladet/<%= img %>" class="img-fluid rounded shadow-sm gallery-img" alt="<%= img %>">
+          </div>
+        <% }); %>
+      </div>
+    </div>
+        <script>
+    document.querySelectorAll('.gallery-img').forEach(img => {
+      let scale = 1;
+      let isDragging = false;
+      let startX, startY, lastX = 0, lastY = 0;
+    
+      img.addEventListener('wheel', function(event) {
+        event.preventDefault();
+        // Zoom in
+        if (event.deltaY < 0) {
+          scale += 0.1;
+        }
+        // Zoom out
+        else if (event.deltaY > 0) {
+          scale = Math.max(1, scale - 0.1);
+        }
+        img.style.transform = `scale(${scale}) translate(${lastX}px, ${lastY}px)`;
+        img.style.zIndex = scale > 1 ? 10 : 1;
+        img.style.boxShadow = scale > 1 ? "0 8px 40px rgba(0,0,0,0.4)" : "";
+        if (scale === 1) {
+          lastX = 0;
+          lastY = 0;
+        }
+      });
+    
+      // Drag start
+      img.addEventListener('mousedown', function(event) {
+        if (scale === 1) return; // Only allow drag when zoomed
+        isDragging = true;
+        startX = event.clientX - lastX;
+        startY = event.clientY - lastY;
+        img.style.cursor = 'grab';
+        event.preventDefault();
+      });
+    
+      // Drag move
+      window.addEventListener('mousemove', function(event) {
+        if (!isDragging) return;
+        lastX = event.clientX - startX;
+        lastY = event.clientY - startY;
+        img.style.transform = `scale(${scale}) translate(${lastX}px, ${lastY}px)`;
+      });
+    
+      // Drag end
+      window.addEventListener('mouseup', function() {
+        if (isDragging) {
+          isDragging = false;
+          img.style.cursor = 'zoom-in';
+        }
+      });
+    
+      // Optional: Reset zoom and position on mouse leave
+      img.addEventListener('mouseleave', function() {
+        scale = 1;
+        lastX = 0;
+        lastY = 0;
+        img.style.transform = '';
+        img.style.zIndex = 1;
+        img.style.boxShadow = '';
+        img.style.cursor = 'zoom-in';
+      });
+    });
+    </script>
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>

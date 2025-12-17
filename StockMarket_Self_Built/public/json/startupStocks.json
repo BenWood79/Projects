@@ -1,0 +1,16 @@
+{
+    "records":[
+        {
+            "id": 0,
+            "query": "INSERT INTO Stocks (name, symbol, price, volume) VALUES ('Apple Inc.', 'AAPL', 150.00, 1000000)"
+        },
+        {
+            "id": 1,
+            "query": "INSERT INTO Stocks (name, symbol, price, volume) VALUES ('Microsoft Corporation', 'MSFT', 250.00, 2000000)"
+        },
+        {
+            "id": 2,
+            "query": "INSERT INTO Stocks (name, symbol, price, volume) VALUES ('Amazon.com Inc.', 'AMZN', 3500.00, 1500000)"
+        }
+    ]
+}

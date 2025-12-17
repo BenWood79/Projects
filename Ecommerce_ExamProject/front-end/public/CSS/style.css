@@ -1,0 +1,72 @@
+html, body {
+  padding: 50px;
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin-top: 50px;
+  font-size: large;
+  max-width: 87%;
+  margin: auto;
+  background-color:aquamarine;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  font-size: xx-large; 
+  padding: 20 20 20 20;
+}
+
+.short-date {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#websiteName{
+  text-decoration: none;
+  font-size: x-large;
+  border: solid black 2px;
+  background-color: black;
+}
+
+#homePage{
+  background-image: url('../images/1708527297657.jpg');
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #111111;
+  background: #f5f5f5;
+  font-weight: 300;
+  min-width: 230px;
+  max-width: 100%;
+  margin: 0 auto;
+  position: fixed;
+}
+
+form section {
+  margin-bottom: 18px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+.table-responsive-sm {
+  margin-top: 50px;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%-include('./partials/head.ejs')%>
+</head>
+<body>
+
+  <%-include('./partials/navbar.ejs')%>
+
+    <div class="row">
+
+      <div class=" col d-flex ms-auto align-items-center">
+      <form class="d-flex me-3" id="searchForm">
+        <input type="text" id="searchInput" placeholder="Search for product..." name="search">
+        <button class="btn btn-sm bg-success" type="submit">
+          <i class="fas fa-search"></i>Submit
+        </button>
+      </form>
+      </div>
+
+      <div class="col d-flex ms-auto align-items-center">
+        <form class="d-flex me-5" id="brandSelection">
+          <select id="selectedBrand" onclick="handleBrandChange()">
+            <option></option>
+            <option>Apple</option>
+            <option>Samsung</option>
+            <option>Xiaomi</option>
+            <option>MXQ</option>
+          </select>
+          ORDER BY BRANDS
+        </form>
+      </div>
+
+      <div class="col d-flex ms-auto align-items-center">
+        <form class="d-flex me-5" id="categories">
+          <select id="selectedCategory" onclick="handleCategoryChange()">
+            <option></option>
+            <option>Phones</option>
+            <option>TVs</option>
+            <option>Watches</option>
+            <option>Desktops</option>
+            <option>Laptops</option>
+            <option>Tablets</option>
+          </select>
+          ORDER BY CATEGORIES
+        </form>
+      </div>
+
+    </div>
+
+    <div class="table-responsive-sm ">
+      <table id="productsTable" class="table table-striped table-bordered align-middle text-center">
+        <thead>
+          <script>window.currentUser = <% - JSON.stringify(user || null) %>;</script>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Caterory</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Image</th>
+            <th scope="col">Membership</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Date Added</th>
+            <th scope="col">Is Deleted</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Updated At</th>
+            <% if (user && user.username) { %>
+              <th scope="col">Options</th>
+              <% } %>
+          </tr>
+        </thead>
+        <tbody id="productsTableContent">
+
+          <% products.forEach(function(product) {%>
+            <tr data-product-id="<%= product.id %>">
+              <td>
+                <%= product.id %>
+              </td>
+              <td class="product-category">
+                <%= product.category %>
+              </td>
+              <td class="product-brand">
+                <%= product.brand %>
+              </td>
+              <td class="product-imgurl">
+                <% if (product.imgurl && product.imgurl.startsWith('http')) {%>
+                  <img src='<%= product.imgurl  %>' style="max-width:80px;max-height:80px;" />
+                  <% } %>
+              </td>
+              <td><strong>
+                  <%= user && user.membershipName || '' %>
+                </strong></td>
+              <td class="product-name">
+                <%= product.name %>
+              </td>
+              <td class="product-description">
+                <%= product.description %>
+              </td>
+              <td class="product-price">
+                <%= product.price %>
+              </td>
+              <td class="product-quantity">
+                <%= product.quantity %>
+              </td>
+              <td class="product-date-added short-date">
+                <%= product.date_added ? product.date_added.slice(0, 10).split('-').reverse().join('/') : '' %>
+              </td>
+              <td class="product-deleted">
+                <%= product.deleted ? 'Yes' : 'No' %>
+              </td>
+              <td class="short-date">
+                <%= product.createdAt ? product.createdAt.slice(0, 10).split('-').reverse().join('/') : '' %>
+              </td>
+              <td class="short-date">
+                <%= product.updatedAt ? product.updatedAt.slice(0, 10).split('-').reverse().join('/') : '' %>
+              </td>
+              <td>
+                <% if (user && user.username==="Admin" ) { %>
+                  <button class="btn btn-warning btn-sm mx-1"
+                    onclick="softDelete('<%= product.id %>', '<%= product.deleted %>')">Delete/Restore
+                  </button>
+                  <button class="btn btn-danger btn-sm mx-1"
+                    onclick="openProductModal(JSON.parse(decodeURIComponent('<%= encodeURIComponent(JSON.stringify(product)) %>')))">Edit
+                  </button>
+                  <% } %>
+                    <% if (user && user.username) { %>
+                      <button class="btn btn-sm bg-success"
+                        onclick='addToCart(JSON.parse(decodeURIComponent("<%= encodeURIComponent(JSON.stringify(product)) %>")))'>Add
+                        to Cart
+                      </button>
+                      <% } %>
+              </td>
+            </tr>
+            <%});%>
+        </tbody>
+      </table>
+    </div>
+    <%-include('./partials/modalProducts.ejs')%>
+      <%-include('./partials/footer.ejs')%>
+
+</body>
+
+</html>
