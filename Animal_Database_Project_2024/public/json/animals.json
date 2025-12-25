@@ -1,0 +1,56 @@
+{
+  "records": [
+    {
+      "id": 0,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Coco', 'Dwarf Hamster', '2020-02-12', 'Calm, Scared', 'Small', 'false')"
+    },
+    {
+      "id": 1,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Ted', 'Tedy Bear Hamster', '2021-02-12', 'Calm, Scared', 'Small', 'false')"
+    },
+    {
+      "id": 2,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Coco', 'Jack-Russel', '2020-02-12', 'Energetic', 'Medium', 'false')"
+    },
+    {
+      "id": 3,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Everrest', 'Budgy', '2019-02-12', 'Calm, Happy', 'Small', 'false')"
+    },
+    {
+      "id": 4,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Rocko', 'Tortouse', '2020-02-12', 'Calm, Lazy', 'Small', 'false')"
+    },
+    {
+      "id": 5,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Goldy', 'Gold Fish', '2023-02-12', 'Calm', 'Small', 'false')"
+    },
+    {
+      "id": 6,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Lizzy', 'Lizzard', '2020-02-12', 'Calm, Lazy', 'Medium', 'false')"
+    },
+    {
+      "id": 7,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Goga', 'Bearded Dragon', '2018-02-12', 'Calm, Lazy, Scared', 'Large', 'false')"
+    },
+    {
+      "id": 8,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Tweet Tweet', 'Parrot', '2020-02-12', 'Calm, Happy', 'Large', 'false')"
+    },
+    {
+      "id": 9,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Toothless', 'Corn Snake', '2017-02-12', 'Scared', 'Medium', 'false')"
+    },
+    {
+      "id": 10,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Sophie', 'Dwarf Hamster', '2020-02-12', 'Calm, Scared', 'Small', 'false')"
+    },
+    {
+      "id": 11,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Teddy', 'Teddy Bear Hamster', '2021-02-12', 'Calm, Scared', 'Small', 'false')"
+    },
+    {
+      "id": 12,
+      "query": "INSERT INTO Animals (Name, Species, Birthday, Temperament, Size, Adopted) VALUES ('Roger', 'Parrot', '2020-02-12', 'Calm, Happy', 'Large', 'false')"
+    }
+  ]
+}

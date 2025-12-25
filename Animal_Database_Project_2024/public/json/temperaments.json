@@ -1,0 +1,12 @@
+{
+    "records":[
+    {
+        "id": 0,
+        "query": "INSERT INTO Temperaments (Temperament) VALUES ('Scared')"
+    },
+    {
+        "id": 2,
+        "query": "INSERT INTO Temperaments (Temperament) VALUES ('Scared')"
+    }
+]
+}

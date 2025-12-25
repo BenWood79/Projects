@@ -1,0 +1,51 @@
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100 fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/animals">Adopt Animal!</a>
+        <div class="ms-auto me-3">
+          <% if (user && user.username) { %>
+            <b>Hello <%= user.username %>!</b>
+          <% } else { %>
+            <b>Hello Guest!</b>
+          <% } %>
+        </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
+                    <!-- Search form OUTSIDE the <ul> -->
+                    <form class="d-flex ms-2" action="/request/search" method="POST">
+                        <input type="text" id="searchInput" class="form-control me-2" placeholder="Search for animal..." name="search">
+                        <button class="btn btn-sm bg-success" type="submit">
+                            <i class="fas fa-search"></i> Submit
+                        </button>
+                    </form>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/animals">Animals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/species">Species</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/temperament">Temperament</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/signup">Sign in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Log in</a>
+                        </li>
+                        <% if (user) { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Log out</a>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+    </div>
+</nav>

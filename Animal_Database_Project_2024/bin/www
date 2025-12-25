@@ -1,0 +1,179 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require("../app");
+var debug = require("debug")("databaseproject:server");
+var http = require("http");
+var db = require("../models");
+var fs = require("fs");
+var path = require("path");
+const { QueryTypes } = require("sequelize");
+require("dotenv").config();
+
+/**
+ * Variables to be used by event handlers
+ */
+var server;
+var port;
+
+/**
+ * Populate database with initial data if empty
+ */
+async function populateDatabase() {
+  try {
+    // Check if animals table is empty
+    const animalsCount = await db.sequelize.query(
+      "SELECT COUNT(*) as total FROM Animals",
+      { type: QueryTypes.SELECT }
+    );
+
+    // Check if users table is empty
+    const usersCount = await db.sequelize.query(
+      "SELECT COUNT(*) as total FROM Users",
+      { type: QueryTypes.SELECT }
+    );
+
+    // Populate users if empty
+    if (usersCount[0].total === 0) {
+      console.log("Users table is empty. Populating users...");
+      const usersData = JSON.parse(
+        fs.readFileSync(
+          path.join(__dirname, "../public/json/users.json"),
+          "utf8"
+        )
+      );
+      for (const record of usersData.records) {
+        try {
+          await db.sequelize.query(record.query, { type: QueryTypes.INSERT });
+        } catch (err) {
+          if (err.name !== "SequelizeUniqueConstraintError") {
+            throw err;
+          }
+        }
+      }
+      console.log("Users populated");
+    } else {
+      console.log("Users table already has data.");
+    }
+
+    // Populate animals if empty
+    if (animalsCount[0].total === 0) {
+      console.log("Animals table is empty. Populating animals...");
+      const animalsData = JSON.parse(
+        fs.readFileSync(
+          path.join(__dirname, "../public/json/animals.json"),
+          "utf8"
+        )
+      );
+      for (const record of animalsData.records) {
+        await db.sequelize.query(record.query, { type: QueryTypes.INSERT });
+      }
+      console.log("Animals populated");
+    } else {
+      console.log("Animals table already has data.");
+    }
+
+    if (animalsCount[0].total === 0 || usersCount[0].total === 0) {
+      console.log("Database population completed successfully");
+    }
+  } catch (error) {
+    console.error("Error populating database:", error);
+  }
+}
+
+/**
+ * Initialize database and start server
+ */
+(async () => {
+  try {
+    // Sync database before starting server (use force: false to avoid dropping tables)
+    await db.sequelize.sync({ force: false });
+    console.log("Database synced successfully");
+
+    // Populate database if empty
+    await populateDatabase();
+
+    /**
+     * Get port from environment and store in Express.
+     */
+
+    port = normalizePort(process.env.PORT || "8001");
+    app.set("port", port);
+
+    /**
+     * Create HTTP server.
+     */
+
+    server = http.createServer(app);
+
+    /**
+     * Listen on provided port, on all network interfaces.
+     */
+
+    server.listen(port);
+    server.on("error", onError);
+    server.on("listening", onListening);
+  } catch (error) {
+    console.error("Failed to sync database:", error);
+    process.exit(1);
+  }
+})();
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== "listen") {
+    throw error;
+  }
+
+  var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case "EACCES":
+      console.error(bind + " requires elevated privileges");
+      process.exit(1);
+      break;
+    case "EADDRINUSE":
+      console.error(bind + " is already in use");
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+  debug("Listening on " + bind);
+}
