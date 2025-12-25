@@ -246,7 +246,10 @@ These projects showcase my development capabilities and are available for review
 ## NB! : The following microservices: 
 ````diff
 -     Ecommerce_Examproject
+<<<<<<< HEAD
 -         Back-end and Front-end folders
+=======
+>>>>>>> bba4c482129bca8e01fbb6e2dd14e7902bab2a36
 -     Goldmed_Self_Built
 -     StockMarket_Self_Built
 -     TheTheoShop_Self_Built
