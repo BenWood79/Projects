@@ -4,18 +4,19 @@ const jwt = require("jsonwebtoken");
 
 router.get("/", async (req, res, next) => {
   try {
-    const token = req.cookies.token; 
-    const response = await fetch("http://localhost:3002/membership", {
-      headers: { 
-        Authorization: `Bearer ${token}` }
+    const token = req.cookies.token;
+    const response = await fetch("/api/membership", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
-    
+
     const data = await response.json();
     console.log(data);
     const membership = data.data.result;
     res.render("membership", {
       membership: membership,
-      title: "Memberships"
+      title: "Memberships",
     });
   } catch (err) {
     console.log(err);

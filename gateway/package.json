@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index",
-    "dev": "nodemon index"
+    "dev": "nodemon index",
+    "start-all": "concurrently \"npm start\" \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd ../Ecommerce_ExamProject/back-end && npm run dev",
+    "frontend": "cd ../Ecommerce_ExamProject/front-end && npm run dev"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +20,8 @@
     "express": "^5.2.1",
     "express-http-proxy": "^2.1.2",
     "http-proxy": "^1.18.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
   }
 }

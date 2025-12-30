@@ -2,54 +2,54 @@
     <div class="container-fluid">
         <script src="/javaScript/login.js"></script>
         <div class="d-flex ms-2">
-        <% if (user && user.username) { %>
-            <b>Hello <%= user.username %>! </b>
-          <% } else { %>
-            <b>Hello Guest!</b>
-          <% } %>
+            <% if (user && user.username) { %>
+                <b>Hello <%= user.username %>! </b>
+                <% } else { %>
+                    <b>Hello Guest!</b>
+                    <% } %>
         </div>
-        <div class="collapse navbar-collapse justify-content-middle" id="navbarSupportedContent">  
-            <ul class="navbar-nav"> 
-                <i class="fas fa-house"></i>             
+        <div class="collapse navbar-collapse justify-content-middle" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <i class="fas fa-house"></i>
                 <li class="nav-item me-4">
                     <a class="nav-link" href="/">HOME</a>
-                </li> 
+                </li>
                 <i class="fas fa-gift"></i>
                 <li class="nav-item me-4">
                     <a class="nav-link" href="/products">PRODUCTS</a>
                 </li>
-                <% if (user && user.username === "Admin") { %>
-                <i class="fa fa-person"></i>                                   
-                <li class="nav-item me-4">
-                    <a class="nav-link" href="/users">USERS</a>
-                <% } %>
-                </li>     
-                 <% if (user && user.username) { %>
-                <i class="fas fa-question"></i> 
-                <li class="nav-item me-4">
-                    <a class="nav-link" href="/membership">MEMBERSHIPS</a>
-                </li>                              
-                <i class="fas fa-book"></i>         
-                <li class="nav-item me-4">
-                    <a class="nav-link" href="/orders">ORDERS</a>
-                </li> 
-                <i class="fa fa-shopping-cart"></i>                                   
-                <li class="nav-item me-4">
-                    <a class="nav-link" href="/cart">CART</a>
-                 <% } %>
-                </li>  
-                <li class="nav-item me-4">
-                    <a class="btn btn-sm bg-success" href="/signup">SIGNUP</a>
-                </li> 
-                <li class="nav-item me-4">
-                    <a class="btn btn-sm bg-success" href="/login">LOGIN</a>
-                </li>                 
-                <li class="nav-item me-4"> 
-                    <script src="/javaScript/login.js" defer></script>
-                    <a class="btn btn-sm bg-success" onclick="event.preventDefault();logout('http://localhost:3002/logout')">LOGOUT</a>
-                </li>                          
+                <% if (user && user.username==="Admin" ) { %>
+                    <i class="fa fa-person"></i>
+                    <li class="nav-item me-4">
+                        <a class="nav-link" href="/users">USERS</a>
+                        <% } %>
+                    </li>
+                    <% if (user && user.username) { %>
+                        <i class="fas fa-question"></i>
+                        <li class="nav-item me-4">
+                            <a class="nav-link" href="/membership">MEMBERSHIPS</a>
+                        </li>
+                        <i class="fas fa-book"></i>
+                        <li class="nav-item me-4">
+                            <a class="nav-link" href="/orders">ORDERS</a>
+                        </li>
+                        <i class="fa fa-shopping-cart"></i>
+                        <li class="nav-item me-4">
+                            <a class="nav-link" href="/cart">CART</a>
+                            <% } %>
+                        </li>
+                        <li class="nav-item me-4">
+                            <a class="btn btn-sm bg-success" href="/signup">SIGNUP</a>
+                        </li>
+                        <li class="nav-item me-4">
+                            <a class="btn btn-sm bg-success" href="/login">LOGIN</a>
+                        </li>
+                        <li class="nav-item me-4">
+                            <script src="/javaScript/login.js" defer></script>
+                            <a class="btn btn-sm bg-success"
+                                onclick="event.preventDefault();logout('/api/logout')">LOGOUT</a>
+                        </li>
             </ul>
-        </div>        
-    </div>    
+        </div>
+    </div>
 </nav>
-

@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <%-include('./partials/head.ejs')%>
-  <body>
-    
-    <%-include('./partials/navbar.ejs')%>
-			
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <%-include('./partials/head.ejs')%>
+
+<body>
+
+  <%-include('./partials/navbar.ejs')%>
+
     <form>
-        <section>
-            <label for="username">Username</label>
-            <input id="username" name="username" type="text" autocomplete="username" required autofocus>
-        </section>
-        <section>
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" autocomplete="password" required>
-        </section>
-        <button type="submit" method="POST" onclick="event.preventDefault();login('http://localhost:3002/login')">Login</button>
+      <section>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+      </section>
+      <section>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="password" required>
+      </section>
+      <button type="submit" method="POST" onclick="event.preventDefault();login('/api/login')">Login</button>
     </form>
 
-     <%-include('./partials/footer.ejs')%> 
+    <%-include('./partials/footer.ejs')%>
 
-  </body>
-  
+</body>
+
 </html>
