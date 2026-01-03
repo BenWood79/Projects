@@ -6,12 +6,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/animals", proxy("http://localhost:8001"));
-app.use("/ecommerce/backend", proxy("http://localhost:8002"));
-app.use("/ecommerce/frontend", proxy("http://localhost:8003"));
-app.use("/goldmed", proxy("http://localhost:8004"));
-app.use("/stockMarket", proxy("http://localhost:8005"));
-app.use("/theTheoShop", proxy("http://localhost:8006"));
+// Proxy everything to the animal service running on port 3001
+app.use("/", proxy("http://localhost:3001", {
+    proxyReqPathResolver: (req) => req.originalUrl, // keep the original path intact
+  })
+);
+
 app.listen(8000, () => {
   console.log("Gateway is running on Port 8000");
 });

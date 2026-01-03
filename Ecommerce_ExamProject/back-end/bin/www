@@ -96,4 +96,35 @@ function onListening() {
   var addr = server.address();
   var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
   debug("Listening on " + bind);
+  console.log(`Server listening on ${bind}`);
+
+  // Initialize database on startup
+  initializeDatabase();
+}
+
+/**
+ * Initialize database with default data
+ */
+async function initializeDatabase() {
+  try {
+    const axios = require("axios");
+    console.log("Initializing database...");
+    const response = await axios.post(`http://localhost:${port}/init`);
+    console.log("✓ Database initialized successfully");
+  } catch (error) {
+    // Only log error if it's not a duplicate entry error (which means DB is already initialized)
+    if (
+      error.response?.data?.error?.message?.includes("Duplicate entry") ||
+      (error.response?.status === 500 &&
+        error.response?.data?.message?.includes("already exists"))
+    ) {
+      console.log("✓ Database already initialized");
+    } else {
+      console.error(
+        "Database initialization error:",
+        error.response?.data || error.message
+      );
+      console.log("You may need to run POST /init manually");
+    }
+  }
 }

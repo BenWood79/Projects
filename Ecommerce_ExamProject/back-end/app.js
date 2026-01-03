@@ -31,23 +31,19 @@ var db = require("./models");
 
 console.log("✓ Database models required");
 
-// Instead of sync, just verify connection:
+// Authenticate and sync database
 db.sequelize
   .authenticate()
   .then(() => {
     console.log("Database connection established successfully.");
+    return db.sequelize.sync({ force: false });
+  })
+  .then(() => {
+    console.log("✓ Database tables synchronized successfully.");
   })
   .catch((error) => {
-    console.error("Unable to connect to the database:", error);
+    console.error("Database error:", error);
   });
-
-/*db.sequelize.sync({ force: false })
-  .then(async () => {
-      console.log('Database schema updated successfully.');
-  })
-  .catch((error) => {
-      console.error('Error updating database schema:', error);
-  });*/
 
 var app = express();
 

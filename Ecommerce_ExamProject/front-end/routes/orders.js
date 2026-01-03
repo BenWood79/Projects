@@ -2,11 +2,13 @@ var express = require("express");
 var router = express.Router();
 const jwt = require("jsonwebtoken");
 
+const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:3002";
+
 router.get("/", async (req, res, next) => {
   try {
     const token = req.cookies.token;
     const decoded = jwt.decode(token);
-    const response = await fetch("/api/orders", {
+    const response = await fetch(`${API_BASE_URL}/orders`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -42,7 +44,7 @@ router.post("/:userId/membership", async (req, res, next) => {
 
     const { userId } = req.params;
 
-    await fetch(`/api/orders/${userId}/membership`, {
+    await fetch(`${API_BASE_URL}/orders/${userId}/membership`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -3,11 +3,13 @@ var router = express.Router();
 const jwt = require("jsonwebtoken");
 const axios = require("axios");
 
+const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:3002";
+
 router.get("/", async (req, res, next) => {
   try {
     const token = req.cookies.token;
     const decoded = jwt.decode(token);
-    const productsResponse = await axios.get("/api/products", {
+    const productsResponse = await axios.get(`${API_BASE_URL}/products`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -18,11 +20,14 @@ router.get("/", async (req, res, next) => {
     let membershipName = "";
     let user = null;
     if (decoded && decoded.id) {
-      const userResponse = await axios.get(`/api/users/${decoded.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const userResponse = await axios.get(
+        `${API_BASE_URL}/api/users/${decoded.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (!userResponse.ok) {
         throw new Error(`Failed to fetch user: ${userResponse.status}`);
