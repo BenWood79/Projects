@@ -242,18 +242,6 @@ These projects showcase my development capabilities and are available for review
 
 ---
 
-
-## NB! : The following microservices: 
-````diff
--     Ecommerce_Examproject
-<<<<<<< HEAD
--         Back-end and Front-end folders
-=======
->>>>>>> bba4c482129bca8e01fbb6e2dd14e7902bab2a36
--     Goldmed_Self_Built
--     StockMarket_Self_Built
--     TheTheoShop_Self_Built
-````
 ##    This repositorry is full of unfinished works in progress 
 ##    that are subject to change in correspondence with the author's personal 
 ##    development. Studies are due to end in spring 2027. 
