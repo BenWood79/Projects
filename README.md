@@ -236,7 +236,7 @@ These projects showcase my development capabilities and are available for review
 
 ---
 
-**Last Updated**: December 17, 2025
+**Last Updated**: January 3rd, 2026
 
 **Author**: BenWood79
 
@@ -254,4 +254,6 @@ These projects showcase my development capabilities and are available for review
 -     StockMarket_Self_Built
 -     TheTheoShop_Self_Built
 ````
-##    are still unfinished works in progress (17.12.2025)
+##    This repositorry is full of unfinished works in progress 
+##    that are subject to change in correspondence with the author's personal 
+##    development. Studies are due to end in spring 2027. 
