@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
 var session = require("express-session");
@@ -12,10 +12,11 @@ const jsend = require("jsend");
 
 var indexRouter = require("./routes/index");
 
-var db = require('./models');
-db.sequelize.sync({ force: false })
+var db = require("./models");
+db.sequelize
+  .sync({ force: false })
   .then(() => {
-      console.log('Database schema updated successfully.');
+    console.log("Database schema updated successfully.");
   })
   .catch((error) => {
     console.error("Error updating database schema:", error);
@@ -34,7 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   cors({
-    origin: "http://localhost:3004",
+    origin: ["http://localhost:3004", "http://localhost:8000"],
     credentials: true,
   })
 );
