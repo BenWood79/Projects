@@ -16,10 +16,10 @@
         <div id="signupNavbar" class="col navbar-col">
             <nav class="vertical-navbar">
                 <ul>
-                    <a href="/">HOME</a>
-                    <a href="/signup">SIGN UP</a>
-                    <a href="/signin">SIGN IN</a>
-                    <a href="/signout">SIGN OUT</a>
+                    <a href="/stocks">HOME</a>
+                    <a href="/stocks/signup">SIGN UP</a>
+                    <a href="/stocks/signin">SIGN IN</a>
+                    <a href="/stocks/signout">SIGN OUT</a>
                 </ul>
             </nav>
         </div>
@@ -27,7 +27,7 @@
             <header>
                 <%- title %>
             </header>
-            <form method="POST" action="/signup" onsubmit="return validateSignup()">
+            <form method="POST" action="/stocks/signup" onsubmit="return validateSignup()">
                 <section>
                     <label for="fullname">Full Name</label>
                     <input id="fullname" name="fullname" type="text" autocomplete="fullname" required autofocus>

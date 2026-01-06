@@ -8,7 +8,8 @@
 
     <% if (req.query.error==='permission' ) { %>
       <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 1rem;">
-        You do not have permission to access that page. Please <a href="/login">log in</a> or <a href="/signup">sign
+        You do not have permission to access that page. Please <a href="/animals/login">log in</a> or <a
+          href="/animals/signup">sign
           up</a> as an admin.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
@@ -23,7 +24,7 @@
             <h2>Welcome to the course assignment for DAB</h2>
 
             <div id="coverPicture">
-              <img src="/img/home.png" alt="">
+              <img src="/animals/img/home.png" alt="">
             </div>
 
             <!--
@@ -37,12 +38,12 @@
 
         </div>
 
-        <form action="/logout" method="post">
+        <form action="/animals/logout" method="post">
           <button class="logout" type="submit">Sign out</button>
         </form>
 
         <div id="login-form">
-          <form action="/login/password" method="POST">
+          <form action="/animals/login/password" method="POST">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>

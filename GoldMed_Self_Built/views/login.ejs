@@ -6,10 +6,10 @@
     <%- include('./partials/head.ejs') %>
 </head>
 
-    <body class="position-relative" data-bs-spy="scroll">
-        <%- include('./partials/navbar.ejs') %>        
-            
-        <form method="POST" action="/login">
+<body class="position-relative" data-bs-spy="scroll">
+    <%- include('./partials/navbar.ejs') %>
+
+        <form method="POST" action="/goldmed/login">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="username" required>
@@ -24,5 +24,6 @@
             </div>
         </form>
         <%- include('./partials/footer.ejs') %>
-    </body>
+</body>
+
 </html>
