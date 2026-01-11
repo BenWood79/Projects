@@ -6,6 +6,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+app.set("view engine", "ejs");
+app.set("views", __dirname + "/views");
+
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
 // Animal database (port 3001) - mount on /animals prefix
 app.use(
   "/animals",

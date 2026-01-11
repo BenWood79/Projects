@@ -1,0 +1,190 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gateway Hub</title>
+    <style>
+        body {
+            font-family: system-ui, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        h1 {
+            margin: 0 0 16px;
+            font-size: 24px;
+        }
+
+        p {
+            margin: 0 0 24px;
+            color: #94a3b8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            appearance: none;
+            border: 1px solid #334155;
+            background: #1f2937;
+            color: #e2e8f0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            border-color: #64748b;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .up {
+            background: #10b981;
+        }
+
+        .down {
+            background: #ef4444;
+        }
+
+        .unknown {
+            background: #f59e0b;
+        }
+
+        footer {
+            margin-top: 24px;
+            color: #64748b;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Project Gateway</h1>
+    <p>Launch apps and see live status via the gateway.</p>
+
+    <div class="grid">
+        <div class="card" id="card-animals">
+            <h2>Animal Adoption</h2>
+            <div class="actions">
+                <button class="btn" onclick="openApp('/animals')">Open</button>
+                <a class="btn" href="/animals" target="_blank" rel="noopener">Open in new tab</a>
+            </div>
+            <div class="status"><span class="dot unknown" id="dot-animals"></span><span
+                    id="status-animals">Checking…</span></div>
+        </div>
+
+        <div class="card" id="card-goldmed">
+            <h2>GoldMed</h2>
+            <div class="actions">
+                <button class="btn" onclick="openApp('/goldmed')">Open</button>
+                <a class="btn" href="/goldmed" target="_blank" rel="noopener">Open in new tab</a>
+            </div>
+            <div class="status"><span class="dot unknown" id="dot-goldmed"></span><span
+                    id="status-goldmed">Checking…</span></div>
+        </div>
+
+        <div class="card" id="card-stocks">
+            <h2>Stock Market</h2>
+            <div class="actions">
+                <button class="btn" onclick="openApp('/stocks')">Open</button>
+                <a class="btn" href="/stocks" target="_blank" rel="noopener">Open in new tab</a>
+            </div>
+            <div class="status"><span class="dot unknown" id="dot-stocks"></span><span
+                    id="status-stocks">Checking…</span></div>
+        </div>
+
+        <div class="card" id="card-shop">
+            <h2>The Theo Shop</h2>
+            <div class="actions">
+                <button class="btn" onclick="openApp('/shop')">Open</button>
+                <a class="btn" href="/shop" target="_blank" rel="noopener">Open in new tab</a>
+            </div>
+            <div class="status"><span class="dot unknown" id="dot-shop"></span><span id="status-shop">Checking…</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>Gateway running at / on localhost.</footer>
+
+    <script>
+        function openApp(path) { window.location.href = path; }
+
+        const services = [
+            { key: 'animals', path: '/animals' },
+            { key: 'goldmed', path: '/goldmed' },
+            { key: 'stocks', path: '/stocks' },
+            { key: 'shop', path: '/shop' }
+        ];
+
+        async function checkService(service) {
+            const dot = document.getElementById(`dot-${service.key}`);
+            const label = document.getElementById(`status-${service.key}`);
+            try {
+                // Prefer a lightweight HEAD; if unsupported, fall back to GET
+                let res = await fetch(service.path, { method: 'HEAD', cache: 'no-store' });
+                if (!res.ok) {
+                    res = await fetch(service.path, { method: 'GET', cache: 'no-store' });
+                }
+                if (res.ok) {
+                    dot.className = 'dot up';
+                    label.textContent = 'Online';
+                } else {
+                    dot.className = 'dot down';
+                    label.textContent = `Error ${res.status}`;
+                }
+            } catch (err) {
+                dot.className = 'dot down';
+                label.textContent = 'Offline';
+            }
+        }
+
+        function runChecks() {
+            services.forEach(checkService);
+        }
+
+        // Single check on load
+        runChecks();
+    </script>
+</body>
+
+</html>
