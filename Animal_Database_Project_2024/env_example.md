@@ -13,6 +13,6 @@ PORT="3001"
 HOST="localhost"
 
 
-NB! Your database must be named 'theTheoshopdb'
+NB! Your database must be named 'adoptiondb'
 
     You must use PORT 3001

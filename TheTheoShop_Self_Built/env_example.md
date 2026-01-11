@@ -15,5 +15,5 @@ HOST="localhost"
 
 NB! Your database must be named 'theTheoshopdb'
 
-    You must use PORT 3005
+    You must use PORT 3006
 

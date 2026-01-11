@@ -1,247 +1,97 @@
 # Projects Portfolio
 
-A comprehensive collection of full-stack web applications demonstrating expertise in modern web development, database design, authentication, and software architecture.
+A concise tour of the active Node/Express projects in this workspace. The Ecommerce folder is intentionally excluded until it is ready for review.
 
-## Technical Stack
+## How to Explore Quickly
 
-- **Backend**: Node.js, Express.js
-- **Database**: MySQL, Sequelize ORM
-- **Frontend**: EJS templating, Bootstrap, JavaScript (ES6+)
-- **Authentication**: Passport.js (local strategy)
-- **API Architecture**: RESTful endpoints with raw SQL queries
-- **Version Control**: Git, GitHub
-- **DevOps**: Environment variables (dotenv), Transaction management
-
-## Projects Overview
-
-### 1. Animal Database Project 2024
-
-**A full-stack animal adoption management system**
-
-- **Features**:
-  - User authentication with Passport.js
-  - CRUD operations for animal listings
-  - Advanced filtering by age, size, species, and date range
-  - Adoption tracking with transaction-based database operations
-  - Dynamic table rendering with JavaScript
-- **Technologies**: Express.js, MySQL, Sequelize, EJS, Bootstrap
-- **Key Achievements**:
-  - Implemented transactional adoption system with INSERT IGNORE for idempotency
-  - Converted ORM queries to raw SQL for performance optimization
-  - Built responsive UI with dynamic filtering capabilities
-  - Auto-population of database on startup for seamless deployment
-
-**Directory**: `/Animal_Database_Project_2024`
-
----
-
-### 2. Ecommerce Exam Project
-
-**A comprehensive e-commerce platform with front-end and back-end separation**
-
-- **Features**:
-
-  - Dual architecture (front-end and back-end servers)
-  - Product catalog with search and filtering
-  - Shopping cart management
-  - Order processing system
-  - User authentication and role-based access control
-  - Admin dashboard for product and user management
-  - Membership tier system
-  - Swagger API documentation
-
-- **Technologies**: Express.js, MySQL, Sequelize, EJS, Swagger
-- **Key Achievements**:
-  - Implemented secure session-based authentication
-  - Built scalable microservice-style front-end/back-end architecture
-  - Created comprehensive API documentation with Swagger
-  - Developed role-based permission system (user, admin roles)
-
-**Directory**: `/Ecommerce_ExamProject`
-
----
-
-### 3. API Gateway
-
-**A lightweight HTTP proxy server for request forwarding and microservice routing**
-
-- **Features**:
-
-  - Request forwarding and routing
-  - Microservice gateway pattern implementation
-  - HTTP proxy functionality
-
-- **Technologies**: Express.js, express-http-proxy
-- **Key Achievements**:
-  - Implemented gateway pattern for service orchestration
-  - Demonstrated understanding of API architecture
-
-**Directory**: `/gateway`
-
----
-
-### 4. GoldMed Self-Built
-
-**A course management and educational services platform**
-
-- **Features**:
-
-  - User authentication and account management
-  - Course catalog and enrollment system
-  - Educational content display
-  - Contact and inquiry management
-  - Role-based access control
-
-- **Technologies**: Express.js, MySQL, Sequelize, EJS
-- **Key Achievements**:
-  - Built from scratch with custom authentication
-  - Responsive design with responsive navigation
-  - Clean code organization with MVC pattern
-
-**Directory**: `/GoldMed_Self_Built`
-
----
-
-### 5. Stock Market Self-Built
-
-**An interactive stock market simulator and trading platform**
-
-- **Features**:
-
-  - User registration and login
-  - Live stock portfolio tracking
-  - Buy/sell stock functionality
-  - User performance metrics
-  - Leaderboard system
-
-- **Technologies**: Express.js, MySQL, Sequelize, EJS, JavaScript
-- **Key Achievements**:
-  - Implemented real-time stock simulation
-  - Built complex financial data models
-  - Created intuitive trading interface
-
-**Directory**: `/StockMarket_Self_Built`
-
----
-
-### 6. TheTheoShop Self-Built
-
-**An e-commerce product showcase with multimedia content**
-
-- **Features**:
-
-  - Product catalog with detailed descriptions
-  - Image and video galleries
-  - Product filtering and search
-  - Responsive shopping interface
-  - Clean product layout
-
-- **Technologies**: Express.js, EJS, Bootstrap, Multimedia assets
-- **Key Achievements**:
-  - Integrated multimedia content (images, videos)
-  - Built responsive product showcase
-  - Professional visual design
-
-**Directory**: `/TheTheoShop_Self_Built`
-
----
-
-## Key Skills Demonstrated
-
-### Database Design
-
-- MySQL schema design and relationships
-- Sequelize ORM model definitions
-- Raw SQL query optimization
-- Transaction management for data consistency
-- Constraint handling (UNIQUE, PRIMARY KEY, FOREIGN KEY)
-
-### Backend Development
-
-- RESTful API design and implementation
-- Authentication and authorization (Passport.js)
-- Session management
-- Error handling and validation
-- Middleware implementation
-- Service layer architecture
-
-### Frontend Development
-
-- EJS templating engine
-- Bootstrap responsive design
-- Dynamic DOM manipulation with JavaScript
-- Fetch API for asynchronous requests
-- Form validation and user feedback
-
-### Software Engineering
-
-- MVC architectural pattern
-- Clean code practices
-- Code refactoring and optimization
-- Git version control and GitHub
-- Environment variable management
-- Debugging and troubleshooting
-
-### DevOps & Deployment
-
-- Environment configuration with dotenv
-- Database initialization and migrations
-- Application startup automation
-- Security best practices (credential protection)
-
----
-
-## Getting Started
-
-Each project contains its own `package.json` and setup instructions. To run a project:
+- Gateway entry point: [gateway](gateway)
+- Launch everything (gateway + four apps) from the gateway folder:
 
 ```bash
-cd [project-directory]
+cd gateway
 npm install
-npm run dev
+npm run start-all
 ```
 
-**Note**: Each project requires a `.env` file with database credentials. See the individual project READMEs for specific environment variable requirements.
+- Then open `http://localhost:8000` to use the hub UI. Each app also runs directly on its own port through the gateway proxies.
 
----
+## Environment Setup (required)
 
-## What I Learned
+- Copy each `env_example.md` to `.env` before running. The apps depend on the database names/credentials defined there; without matching DBs the servers will fail to start.
+- Project env templates:
+  - [Animal_Database_Project_2024/env_example.md](Animal_Database_Project_2024/env_example.md)
+  - [GoldMed_Self_Built/env_example.md](GoldMed_Self_Built/env_example.md)
+  - [StockMarket_Self_Built/env_example.md](StockMarket_Self_Built/env_example.md)
+  - [TheTheoShop_Self_Built/env_example.md](TheTheoShop_Self_Built/env_example.md)
 
-Through building these projects, I've gained hands-on experience with:
+Tip: Create the MySQL databases with the exact names specified in each env file before `npm run dev`/`npm start`.
 
-- Full-stack development lifecycle
-- Database design and optimization
-- Authentication and security practices
-- Debugging complex issues in production-like environments
-- Code refactoring and maintainability
-- Git workflow and version control
-- Building scalable application architecture
+Example MySQL setup (matching the env_example.md files):
 
----
+```sql
+CREATE DATABASE adoptiondb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;      -- Animal_Database_Project_2024
+CREATE DATABASE goldmed CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;         -- GoldMed_Self_Built
+CREATE DATABASE stockmarketdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;   -- StockMarket_Self_Built
+CREATE DATABASE theTheoshopdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;   -- TheTheoShop_Self_Built
+```
 
-## Security Practices
+## How to Review (Quick Path)
 
-All sensitive credentials (database passwords, API keys, environment variables) are protected using:
+- Start everything: `cd gateway && npm install && npm run start-all`
+- Open the hub: http://localhost:8000 and confirm the status dots show Online.
+- Launch via hub buttons and spot-check key flows:
+  - Animal DB: view animals, try a filter.
+  - GoldMed: browse courses/services.
+  - StockMarket: load dashboard/portfolio view.
+  - TheTheoShop: browse products/media.
+- Stop with Ctrl+C in the terminal when done.
 
-- Environment variables stored in `.env` files
-- `.gitignore` configuration to prevent credential leaks
-- Session-based authentication with secure cookies
-- Input validation and prepared statements
+## Projects (Ready for Review)
 
----
+### Gateway
 
-## Contact & Collaboration
+- Purpose: Reverse-proxy front door and hub UI for the projects below.
+- Stack: Express, express-http-proxy, EJS.
+- How to run: `npm run start-all` (from gateway) starts gateway plus all four apps.
+- Directory: [gateway](gateway)
 
-These projects showcase my development capabilities and are available for review. I'm open to collaboration, feedback, and opportunities to apply these skills in a professional environment.
+### Animal Database Project 2024
 
----
+- Purpose: Animal adoption management (auth, CRUD, filtering, adoptions, auto-seeding).
+- Stack: Express, MySQL, Sequelize, EJS, Bootstrap, Passport local auth.
+- How to run: `npm run dev` from [Animal_Database_Project_2024](Animal_Database_Project_2024).
 
-**Last Updated**: January 3rd, 2026
+### GoldMed Self-Built
 
-**Author**: BenWood79
+- Purpose: Course and services platform with auth and role-based access.
+- Stack: Express, MySQL, Sequelize, EJS, Bootstrap.
+- How to run: `npm start` from [GoldMed_Self_Built](GoldMed_Self_Built).
 
----
+### StockMarket Self-Built
 
-##    This repositorry is full of unfinished works in progress 
-##    that are subject to change in correspondence with the author's personal 
-##    development. Studies are due to end in spring 2027. 
+- Purpose: Stock simulator with portfolio tracking, buy/sell, and leaderboard.
+- Stack: Express, MySQL, Sequelize, EJS, JavaScript.
+- How to run: `npm run dev` from [StockMarket_Self_Built](StockMarket_Self_Built).
+
+### TheTheoShop Self-Built
+
+- Purpose: Product showcase with media-rich catalog.
+- Stack: Express, EJS, Bootstrap.
+- How to run: `npm run dev` from [TheTheoShop_Self_Built](TheTheoShop_Self_Built).
+
+## Shared Patterns and Skills
+
+- Node/Express backends with MVC structure and service layers.
+- EJS templating with Bootstrap-based responsive UIs.
+- MySQL + Sequelize models; some projects mix raw SQL where beneficial.
+- Auth via sessions/Passport (where applicable); role-based access in GoldMed.
+- Environment management with `.env` (see each project’s `env_example.md` where provided).
+
+## Notes
+
+- Ecommerce_ExamProject is under active development and intentionally omitted here.
+- Ports (through gateway proxies): animals 3001, goldmed 3004, stocks 3005, shop 3006; gateway on 8000.
+
+**Last Updated**: January 11, 2026
+
+## **Author**: BenWood79
