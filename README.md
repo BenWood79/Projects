@@ -91,6 +91,9 @@ CREATE DATABASE theTheoshopdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; 
 
 - Ecommerce_ExamProject is under active development and intentionally omitted here.
 - Ports (through gateway proxies): animals 3001, goldmed 3004, stocks 3005, shop 3006; gateway on 8000.
+- The Stock market app in currently just an interface
+- There are currently some issues with login functions on all apps
+- Not all functions are in place
 
 **Last Updated**: January 11, 2026
 
