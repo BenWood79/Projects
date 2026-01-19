@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang = 'en'>
+
+<head> 
+   
+	<meta charset="UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE-Edge, chrome= 1">
+
+	<meta name="viewport" content="width=device-width, initial-scale = 1">
+	
+	<title>Benji's</title>
+
+	<style>
+		body{
+			width: 1000px;
+			margin: auto;
+			}
+		h1{	
+            		font-size: 100px;
+			text-align: center;
+			color: rgb(255, 175, 20);
+			text-shadow: 5px 5px 0 #000; 
+			position: relative;
+			margin-top: 100;
+			}
+		pre{	
+            		font-size: 50px;
+			text-align: left;
+			position: relative;
+			}
+		span{
+            		font-size: 80px;
+			text-align: left;
+			color: rgb(255, 175, 20);
+			text-shadow: 2px 2px 0 #000;
+			position: relative;			
+			}
+		th, td{	
+            		font-size: 30px;
+			text-align: left;
+			color: rgb(255, 175, 20);
+			text-shadow: 1px 1px 0 #000;
+			position: relative;
+			}
+		table{	
+           		position: relative;
+			margin: 10px;
+			}
+		select{	
+			background-color: rgb(255,234,0);
+			font-size: 30px;
+			border: rgb(0,102,104) solid 1px;
+			text-shadow: 1px 1px 0 #000; 
+			color: rgb(255, 175, 80);
+			text-shadow: 1px 1px 0 #000; 
+			position: relative;
+			}
+		#circle{
+           		 width: 600px;
+			height: 600px;
+			background-color: rgb(255,234,0);
+			-moz-border-radius: 300px;
+			-webkit-border-radius: 300px;
+			boder-radius: 300px;
+			position: absolute;
+			opacity: 0.2;
+			z-index: -5;
+			}
+		button{	
+			background-color: rgb(255,234,0); 
+			font-size: 50px;
+			color: rgb(255, 175, 20);
+			border: rgb(0,102,104) solid 1px;
+			text-shadow: 2px 2px 0 #000; 
+			position: relative;
+			}
+		.des{
+			padding-left: 30px;;
+			}
+		#clock{
+			font-size: 30px;
+			text-shadow: 1px 1px 0 #000; 
+			color: rgb(255, 175, 80);
+			text-shadow: 1px 1px 0 #000; 
+			position: relative;	
+			}
+		header{
+			display: flex;
+			justify-content: space-between;
+			position: fixed;
+			width: 1000px;
+			margin: 1rem;
+			padding: 1rem;
+			background-color: orange;
+			font-familt: sans-serif;
+			border-radius: 2rem;
+			z-index: 100;
+			}
+		li{
+			position: relative;
+			color: black;
+			display: inline-block;
+			text-align: left;
+			margin-left: 2rem;
+			margin-right: 2rem;
+			}
+		#aboutInfo:hover{
+			color:white;
+			function getText(){
+				document.getElementById("aboutText").display.show
+				};
+			}
+		#menuInfo:hover{
+			color: white;
+			function getText() {
+				document.getElementById("menuInfo").display.show
+				};
+			}
+		#contactInfo:hover{
+			color: white;
+			function getText() {
+				document.getElementById("contectInfo").display.show
+				};
+			}
+	</style>
+
+</head>
+
+<body>
+	<header>
+
+		<h4>Benji's Restaurant</h4>
+
+		<nav>
+			<ul>
+				<li id="aboutInfo">About</li>		
+				<li id="menuInfo">Menu</li>		
+				<li id="contactInfo">Contact</li>											
+			</ul>
+		</nav>
+
+	</header>
+
+	<br><br><br><br><br><br><br><br>
+
+	<div id= "circle"></div>
+
+	<h1>Benji's Indian Restaurant</h1>
+
+	<pre>
+    All starters are £5.00p
+    All mains courses are £10.00p
+    All desserts are £3.50p
+	</pre>
+
+	<span>MENU</span>
+
+	<table>
+		<thead>
+			<tr>
+				<th>STARTERS</th>
+				<th>MAIN COURSES</th>
+				<th class="des">DESSERTS</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr> 
+				<td>Onion Bhajis</td>
+				<td>Beef Vindaloo</td>
+				<td class="des">Banana Cake and Cream</td>
+			</tr>
+			<tr>
+				<td>Poppadoms and Dip</td>
+				<td>Chicken Bhuna</td>
+				<td class="des">Chocolate Pudding</td>
+			</tr>
+			<tr>
+				<td>Samosas in Coriander Sauce</td>
+				<td>Chickpea Curry</td>
+				<td class="des">Diwali Sweets</td>
+			</tr>
+			<tr>
+				<td>Spicy Stuffed Naan Pockets</td>
+				<td>Coconut Curry Fish</td>
+				<td class="des">Fruit Custard</td>
+			</tr>
+			<tr>
+				<td>Tandoori Meatballs</td>
+				<td>Vegetarian Korma</td>
+				<td class="des">Ice Cream</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<span>ORDER FORM</span>
+
+	<table id="foodOrders">
+		<thead>
+			<tr>
+				<th>Starters</th>
+				<th>Main Courses</th>
+				<th>Desserts</th>
+			</tr>		
+		</thead>
+		<tbody>
+		
+			<tr>
+				<td>                                      
+					<form id="starterForm"> 
+					<select id="starters"></select>                            
+					<form>
+				</td>
+				<td>
+					<form id="mainFroms"> 
+					<select id="main"></select>                            
+					<form>                
+				</td>
+				<td>
+					<form id="dessertForm"> 
+					<select id="desserts"></select>                            
+					<form>               
+				</td>
+			</tr>
+			<tr>
+				<td>Enter which dip you would like in the box below. The choices are Spicey Tomatoe, Minty Yoghurt or 						Caramelized Onion</td>
+				<td>Choose rice or chips with your meal from the box below.</td>
+				<td>Enter the amount of desserts being ordered in the box below.</td>
+			</tr> 
+			<tr>
+	                        <td>
+					<select id="extrasForm">
+						<option>-</option>
+						<option>Spicey Tomatoe</option>
+						<option>Minty Yoghurt</option>
+						<option>Caramalized Onions</option>
+					</select>
+				</td>
+				<td>
+					<select id="sidesForm">
+						<option>-</option>
+						<option>Rice</option>
+						<option>Chips</option>
+					</select>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<pre id="aboutText">
+	We are a small indian restautant.
+	We make delicious food.
+	We would like to attract investors.
+	We have been established sinse 2024.
+	</pre>
+
+	<script>
+		var arr = ["-", "Poppadoms and Dip", "Onion Bhajis", "Samosas in Coriander Sauce", "Tandoori Meatballs", "Spicy Stuffed Naan 			Pockets"];
+		arr.sort();
+		var options = "";
+		arr.map((op,i)=>{options+=`<option value="${op}"id="${i}">${op}</option>`})
+		document.getElementById("starters").innerHTML=options;
+	</script>
+
+	<script>
+		var arr = ["-", "Chicken Bhuna", "Beef Vindaloo", "Coconut Curry Fish", "Chickpea Curry", "Vegetarian Korma",];
+		arr.sort();
+		var options = "";
+		arr.map((op,i)=>{options+=`<option value="${op}"id="${i}">${op}</option>`})
+		document.getElementById("main").innerHTML=options;
+	</script>
+
+	<script>
+		var arr = ["-", "Fruit Custard", "Chocolate Pudding", "Diwali Sweets", "Ice Cream", "Banana Cake and Cream",];
+		arr.sort();
+		var options = "";
+		arr.map((op,i)=>{options+=`<option value="${op}"id="${i}">${op}</option>`})
+		document.getElementById("desserts").innerHTML=options;
+	</script>	
+
+	<button onclick="sendOrder()">SEND ORDER</button>
+
+	<script>
+		function sendOrder(){
+			alert("ORDER SENT");
+		}
+	</script>
+
+	<div id="clock" align="left"></div> 
+
+	<script>
+	function digitalClock(){
+		const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+		const date = new Date();
+    		const minutes = date.getMinutes().toString().padStart(2, "0");
+		const seconds = date.getSeconds().toString().padStart(2, "0");
+    		let day = days[date.getDay()];
+		let month = months[date.getMonth()];
+		const time = ("DATE: "+day+" "+date.getDate()+" "+month+" "+date.getFullYear()+" TIME: 								"+date.getHours()+":"+minutes+":"+seconds);
+		document.querySelector('#clock').textContent = time; 
+		};
+	
+    	setInterval(digitalClock, 1000);
+	</script>
+</body>
+</html>
