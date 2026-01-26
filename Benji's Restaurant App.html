@@ -94,7 +94,7 @@
 			margin: 1rem;
 			padding: 1rem;
 			background-color: orange;
-			font-familt: sans-serif;
+			font-family: sans-serif;
 			border-radius: 2rem;
 			z-index: 100;
 			}
@@ -106,24 +106,13 @@
 			margin-left: 2rem;
 			margin-right: 2rem;
 			}
-		#aboutInfo:hover{
+		#aboutInfo:hover, #menuInfo:hover, #contactInfo:hover {
 			color:white;
-			function getText(){
-				document.getElementById("aboutText").display.show
-				};
+			text-decoration: underline;
 			}
-		#menuInfo:hover{
-			color: white;
-			function getText() {
-				document.getElementById("menuInfo").display.show
-				};
-			}
-		#contactInfo:hover{
-			color: white;
-			function getText() {
-				document.getElementById("contectInfo").display.show
-				};
-			}
+		nav{
+			width: 1000px;
+		}
 	</style>
 
 </head>
@@ -248,12 +237,12 @@
 		</tbody>
 	</table>
 
-	<pre id="aboutText">
+	<p id="aboutText">
 	We are a small indian restautant.
 	We make delicious food.
 	We would like to attract investors.
 	We have been established sinse 2024.
-	</pre>
+	</p>
 
 	<script>
 		var arr = ["-", "Poppadoms and Dip", "Onion Bhajis", "Samosas in Coriander Sauce", "Tandoori Meatballs", "Spicy Stuffed Naan 			Pockets"];
