@@ -5,17 +5,6 @@ const fs = require("fs");
 const path = require("path");
 const basename = path.basename(__filename);
 
-/* BACKUP: Original config (commented out)
-require('dotenv').config();
-const config = {
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  // ... existing config
-};
-*/
-
-// NEW: Using root .env
 const connection = {
   username: process.env.DB_USER,
   password: process.env.DB_PASS,

@@ -51,6 +51,7 @@ jest.mock('../services/ProductService', () => {
 
     }));
 });
+
 //Refactored and debugged using Copilot
 var categoriesRouter  = require('../routes/categories');
 var productsRouter = require('../routes/products');
