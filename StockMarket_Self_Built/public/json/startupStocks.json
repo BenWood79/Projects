@@ -1,16 +1,24 @@
 {
-    "records":[
-        {
-            "id": 0,
-            "query": "INSERT INTO Stocks (name, symbol, price, volume) VALUES ('Apple Inc.', 'AAPL', 150.00, 1000000)"
-        },
-        {
-            "id": 1,
-            "query": "INSERT INTO Stocks (name, symbol, price, volume) VALUES ('Microsoft Corporation', 'MSFT', 250.00, 2000000)"
-        },
-        {
-            "id": 2,
-            "query": "INSERT INTO Stocks (name, symbol, price, volume) VALUES ('Amazon.com Inc.', 'AMZN', 3500.00, 1500000)"
-        }
-    ]
+  "records": [
+    {
+      "id": 0,
+      "query": "INSERT INTO Stocks (name, symbol, price, volume) VALUES ('Wood Gaming', 'WDG', 150.00, 100)"
+    },
+    {
+      "id": 1,
+      "query": "INSERT INTO Stocks (name, symbol, price, volume) VALUES ('Kim's Sportsdiner', 'KSD', 280.00, 50)"
+    },
+    {
+      "id": 2,
+      "query": "INSERT INTO Stocks (name, symbol, price, volume) VALUES ('Vic's Snacks', 'VIC', 280.00, 100)"
+    },
+    {
+      "id": 3,
+      "query": "INSERT INTO Stocks (name, symbol, price, volume) VALUES ('Frydenlund Fluids', 'FRY', 280.00, 50)"
+    },
+    {
+      "id": 4,
+      "query": "INSERT INTO Stocks (name, symbol, price, volume) VALUES ('Alex's Business Solutions', 'ABS', 280.00, 50)"
+    }
+  ]
 }
