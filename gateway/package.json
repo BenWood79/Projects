@@ -6,12 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "animals": "cd ../Animal_Database_Project_2024 && npm run dev",
+    "animals": "cd ../Animal_Database_Project_2024 && npm start",
     "goldmed": "cd ../GoldMed_Self_Built && npm start",
-    "stocks": "cd ../StockMarket_Self_Built && npm run dev",
-    "shop": "cd ../TheTheoShop_Self_Built && npm run dev",
-    "start-all": "concurrently -n \"gateway,animals,goldmed,stocks,shop\" -c \"blue,green,yellow,magenta,cyan\" \"npm run dev\" \"npm run animals\" \"npm run goldmed\" \"npm run stocks\" \"npm run shop\""
+    "stocks": "cd ../StockMarket_Self_Built && npm start",
+    "shop": "cd ../TheTheoShop_Self_Built && npm start",
+    "start-all": "concurrently -n \"gateway,animals,goldmed,stocks,shop\" -c \"blue,green,yellow,magenta,cyan\" \"npm run start\" \"npm run animals\" \"npm run goldmed\" \"npm run stocks\" \"npm run shop\""
   },
   "keywords": [],
   "author": "",
